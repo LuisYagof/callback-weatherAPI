@@ -30,9 +30,9 @@ function transformData (array) {
   let data = {
     labels: ['Hoy', 'Mañana', 'Pasao', 'El siguiente', 'En 4 días', 'En 5 días', 'En 6 días', 'En una semana'],
     series: [
-      [array[0].temp.min - 273.5, array[1].temp.min - 273.5, array[2].temp.min - 273.5, array[3].temp.min - 273.5, array[4].temp.min - 273.5, array[5].temp.min - 273.5, array[6].temp.min - 273.5, array[7].temp.min - 273.5],
+      [array[0].temp.min, array[1].temp.min, array[2].temp.min, array[3].temp.min, array[4].temp.min, array[5].temp.min, array[6].temp.min, array[7].temp.min],
 
-      [array[0].temp.max - 273.5, array[1].temp.max - 273.5, array[2].temp.max - 273.5, array[3].temp.max - 273.5, array[4].temp.max - 273.5, array[5].temp.max - 273.5, array[6].temp.max - 273.5, array[7].temp.max - 273.5]
+      [array[0].temp.max, array[1].temp.max, array[2].temp.max, array[3].temp.max, array[4].temp.max, array[5].temp.max, array[6].temp.max, array[7].temp.max]
     ]
   }
 

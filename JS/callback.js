@@ -15,7 +15,7 @@ function getWeather(lat, lon, callback) {
 		else if (!lat || !lon)
 			callback(alert("You must provide latitude and longitude", null));
 		else {
-			fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${WEATHER_API_KEY}`)
+			fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${WEATHER_API_KEY}&units=metric`)
 			.then(response => response.json())
 			.then(questions => callback(null, questions))
 			.catch(error => {callback(error, null)});
