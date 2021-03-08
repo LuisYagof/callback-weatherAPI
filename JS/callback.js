@@ -11,9 +11,9 @@ const WEATHER_API_KEY = "c6003c8fca5f5a582995aef2ce2f8670";
  */
 function getWeather(lat, lon, callback) {
 		if (!WEATHER_API_KEY)
-			callback(new Error("An API KEY must be provided on /JS/callback.js line 4 for function getQuestions to work", null));
+			callback(alert("An API KEY must be provided", null));
 		else if (!lat || !lon)
-			callback(new Error("You must provide latitude and longitude", null));
+			callback(alert("You must provide latitude and longitude", null));
 		else {
 			fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${WEATHER_API_KEY}`)
 			.then(response => response.json())

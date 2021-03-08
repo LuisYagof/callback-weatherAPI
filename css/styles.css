@@ -57,6 +57,7 @@ table {
 .superWrapper {
     background-color: lightgoldenrodyellow;
     width: 100%;
+    margin-bottom: 2%;
     padding: 1%;
     display: flex;
     flex-direction: column;
@@ -96,9 +97,9 @@ input {
 }
 
 #chart1 {
-    margin: 10px auto;
-    width: 80%;
-    height: 80vh;
+    margin: 0 auto;
+    width: 90%;
+    height: 70vh;
 }
 
 .ct-series-a .ct-line {
@@ -118,7 +119,11 @@ input {
     }
     
     h3 {
-        margin: 0 0 3% 0;
+        margin: 0 0 1% 0;
         font-size: 1.2rem;
+    }
+
+    .wrapperSearch {
+        margin: 1% 0px;
     }
 }
