@@ -27,6 +27,12 @@ function printData(elem){
   let tagCont = document.createTextNode(`The current weather is ${elem.description}`)
   tag.appendChild(tagCont)
   WRAPPERresult.appendChild(tag)
+
+  
+  let icon = document.createElement("img")
+  icon.src = `http://openweathermap.org/img/wn/${elem.icon}@2x.png`
+  WRAPPERresult.appendChild(icon)
+  WRAPPERresult.appendChild(tag)
 }
 
 //  ---------------------------------------CHARTIST
@@ -95,15 +101,16 @@ function printMap(lat, lon){
 function reset(){
   INPUTlat.value = ""
   INPUTlon.value = ""
-  document.querySelector("p").remove()
+
+  WRAPPERresult.querySelectorAll('*').forEach(n => n.remove())
   WRAPPERresult.classList.remove("written")
+
   document.querySelector(".ct-chart").querySelectorAll('*').forEach(n => n.remove())
+
   document.querySelector("#mapid").remove()
   let mapbox = document.createElement("div")
   mapbox.setAttribute("id", "mapid")
   document.body.appendChild(mapbox)
-  
-  
 }
 
 RESETbtn.addEventListener("click", reset)
