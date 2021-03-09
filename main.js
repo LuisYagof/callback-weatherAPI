@@ -70,7 +70,12 @@ function transformData (array) {
 }
 
 function reset(){
-  document.querySelector(".ct-chart").remove()
+  INPUTlat.value = ""
+  INPUTlon.value = ""
+  document.querySelector("p").remove()
+  WRAPPERresult.classList.remove("written")
+  document.querySelector(".ct-chart").querySelectorAll('*').forEach(n => n.remove())
+
 }
 
 RESETbtn.addEventListener("click", reset)
