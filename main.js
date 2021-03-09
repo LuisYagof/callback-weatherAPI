@@ -11,6 +11,7 @@ SEARCHbtn.addEventListener("click", function(){
         }
         else {
           transformData(data.daily)
+          printMap(INPUTlat.value, INPUTlon.value)
           if(!WRAPPERresult.classList.contains("written")){
             printData(data.current.weather[0])
           }
@@ -25,6 +26,8 @@ function printData(elem){
   tag.appendChild(tagCont)
   WRAPPERresult.appendChild(tag)
 }
+
+//  ---------------------------------------CHARTIST
 
 function transformData (array) {
   let data = {
@@ -69,13 +72,36 @@ function transformData (array) {
   new Chartist.Line('.ct-chart', data, options, responsiveOptions);
 }
 
+// ---------------------------------------LEAFLET
+function printMap(lat, lon){
+  let mymap = L.map('mapid').setView([lat, lon], 13);
+
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoibHVpc3lhZ29mIiwiYSI6ImNrbTIxYmN3ZTF5ZHMybnJ6M2RrYTVmNGQifQ.MyPx9Os8rxvhQDAVRN3ElQ'
+  }).addTo(mymap);
+
+  L.marker([lat, lon]).addTo(mymap)
+}
+
+// --------------------------------RESET & EVENTS
+
 function reset(){
   INPUTlat.value = ""
   INPUTlon.value = ""
   document.querySelector("p").remove()
   WRAPPERresult.classList.remove("written")
   document.querySelector(".ct-chart").querySelectorAll('*').forEach(n => n.remove())
-
+  document.querySelector("#mapid").remove()
+  let mapbox = document.createElement("div")
+  mapbox.setAttribute("id", "mapid")
+  document.body.appendChild(mapbox)
+  
+  
 }
 
 RESETbtn.addEventListener("click", reset)

@@ -110,6 +110,12 @@ input {
     stroke: rgb(38, 38, 109);
 }
 
+#mapid {
+    margin: 1% auto 5% auto;
+    height: 30vh;
+    width: 70vw;
+}
+
 /* ------------------MEDIA QUERIES------------------*/
 
 @media screen and (min-width: 768px){
@@ -122,8 +128,13 @@ input {
         margin: 0 0 1% 0;
         font-size: 1.2rem;
     }
-
+    
     .wrapperSearch {
         margin: 1% 0px;
+    }
+
+    #mapid {
+        height: 70vh;
+        width: 70vw;
     }
 }
