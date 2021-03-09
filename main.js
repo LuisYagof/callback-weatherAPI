@@ -19,6 +19,8 @@ SEARCHbtn.addEventListener("click", function(){
       })
 })
 
+// -------------------------------------PRINT CURRENT
+
 function printData(elem){
   WRAPPERresult.classList.add("written")
   let tag = document.createElement("p")
