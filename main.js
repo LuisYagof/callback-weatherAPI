@@ -10,6 +10,7 @@ SEARCHbtn.addEventListener("click", function(){
           console.error(error);
         }
         else {
+          resetMap()
           transformData(data.daily)
           printMap(INPUTlat.value, INPUTlon.value)
           if(!WRAPPERresult.classList.contains("written")){
@@ -82,7 +83,8 @@ function transformData (array) {
 
 // ---------------------------------------LEAFLET
 function printMap(lat, lon){
-  let mymap = L.map('mapid').setView([lat, lon], 13);
+  let mymap = L.map('mapid')
+  mymap.setView([lat, lon], 13);
 
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -94,6 +96,11 @@ function printMap(lat, lon){
   }).addTo(mymap);
 
   L.marker([lat, lon]).addTo(mymap)
+
+  // setTimeout(()=> {
+  //   mymap.setView([40.50000, -3.50987])
+  //   L.marker([40.50000, -3.50987]).addTo(mymap)
+  // }, 3000)
 }
 
 // --------------------------------RESET & EVENTS
@@ -107,12 +114,15 @@ function reset(){
 
   document.querySelector(".ct-chart").querySelectorAll('*').forEach(n => n.remove())
 
-  document.querySelector("#mapid").remove()
-  let mapbox = document.createElement("div")
-  mapbox.setAttribute("id", "mapid")
-  document.body.appendChild(mapbox)
+  resetMap()
 }
 
 RESETbtn.addEventListener("click", reset)
 
 // 40.4218534,-3.6921458,284
+function resetMap(){
+  document.querySelector("#mapid").remove()
+  let mapbox = document.createElement("div")
+  mapbox.setAttribute("id", "mapid")
+  document.body.appendChild(mapbox)
+}
